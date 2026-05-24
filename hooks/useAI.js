@@ -2,7 +2,6 @@ import { useAIContext } from "../context/AIContext";
 
 export default function useAI() {
   const {
-    activeInsight,
     aiFeed,
     loading,
     setLoading,
@@ -22,7 +21,6 @@ export default function useAI() {
   };
 
   return {
-    activeInsight,
     aiFeed,
     loading,
     sendToAI,
