@@ -3,14 +3,11 @@ import { createContext, useContext, useState } from "react";
 const AIContext = createContext();
 
 export const AIProvider = ({ children }) => {
-  const [activeInsight, setActiveInsight] = useState(null);
-  const [aiFeed, setAIFeed] = useState([]);
+  const [aiFeed, setAiFeed] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const pushInsight = (payload) => {
-    setActiveInsight(payload);
-
-    setAIFeed((prev) => [
+    setAiFeed((prev) => [
       {
         id: Date.now(),
         timestamp: new Date(),
@@ -23,7 +20,6 @@ export const AIProvider = ({ children }) => {
   return (
     <AIContext.Provider
       value={{
-        activeInsight,
         aiFeed,
         loading,
         setLoading,
