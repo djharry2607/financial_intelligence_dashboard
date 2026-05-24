@@ -1,4 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { AIProvider } from "./context/AIContext";
+import useAI from "./hooks/useAI";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, AreaChart, Area, ScatterChart, Scatter } from "recharts";
 import { C, STYLE, INDICES, STAGE2, SECTORS, FILINGS, CONCALLS, RSIS_STOCKS } from "./constants/config";
 
@@ -933,7 +936,7 @@ Institutional tone. Concise. No retail language.`;
 }
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
-export default function App() {
+function DashboardApp() {
   const [module,setModule]=useState("stage2");
   const [aiContext,setAiContext]=useState(null);
 
@@ -962,5 +965,12 @@ export default function App() {
         </div>
       </div>
     </>
+  );
+}
+export default function App() {
+  return (
+    <AIProvider>
+      <DashboardApp />
+    </AIProvider>
   );
 }
